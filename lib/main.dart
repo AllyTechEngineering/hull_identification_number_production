@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'blocs/data/mic_data_cubit.dart';
+import 'blocs/mic_data/mic_data_cubit.dart';
 import 'blocs/hin_data/hin_data_cubit.dart';
 import 'repositories/mic_repository.dart';
 import 'screens/definition_screen.dart';

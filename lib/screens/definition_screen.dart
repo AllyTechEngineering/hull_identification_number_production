@@ -26,7 +26,7 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
           ),
           onPressed: () => context.go('/'),
         ),
-        title: FittedBox(
+        title: const FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
             'FAQ',
@@ -62,7 +62,7 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                             text:
                                 'History: Prior to Nov. 1,1972 there were no requirements for a HIN to be assigned to recreational boats.  Manufacturers used mostly serial numbers that were unique to that manufacturer, but had no prescribed format beyond that specific manufacturer. Nov. 1,1972 The U.S. Coast Guard required all manufacturers to affix a 12 character HIN on all domestic and imported recreational boats per 33 CFR §181.\nHere are the three formats you may find on a boat',
                             style: TextStyle(fontSize: 16.0, color: Colors.black),
@@ -75,7 +75,7 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 2.0,
                       ),
                       Container(
@@ -84,7 +84,7 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 2.0,
                       ),
                       Container(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../blocs/data/mic_data_cubit.dart';
+import '../blocs/mic_data/mic_data_cubit.dart';
 import '../blocs/hin_data/hin_data_cubit.dart';
 import '../models/hin_data_model.dart';
 import '../models/mic_data_model.dart';
@@ -34,7 +34,9 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
     responsiveAdaptiveClass.size = MediaQuery.of(context).size;
     responsiveAdaptiveClass.height = responsiveAdaptiveClass.size.height;
     responsiveAdaptiveClass.width = responsiveAdaptiveClass.size.width;
-    String micValueForValidation = '111';
+    debugPrint(
+        'HomeScreen orientation: ${MediaQuery.of(context).orientation}\nHeight: ${responsiveAdaptiveClass.size.height}\nWidth: ${responsiveAdaptiveClass.size.width}');
+    // String micValueForValidation = '111';
     return BlocBuilder<MicDataCubit, MicDataState>(
       builder: (context, state) {
         return Scaffold(
@@ -231,12 +233,12 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                   builder: (context, state) {
                     final hinResults = state.hinDataResponse;
                     return Padding(
-                      padding: const EdgeInsets.fromLTRB(4.0, 2.0, 4.0, 0.0),
+                      padding: const EdgeInsets.fromLTRB(6.0, 2.0, 6.0, 0.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Divider(
+                          const Divider(
                             color: Colors.white60,
                             thickness: 4,
                             endIndent: 2,
@@ -322,7 +324,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                   },
                 ),
                 const Padding(
-                  padding: EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 4.0),
+                  padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 4.0),
                   // child: Divider(
                   //   color: Colors.white,
                   //   thickness: 4,
@@ -335,7 +337,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                     if (state is LoadedState) {
                       final micResults = state.micData;
                       return Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.fromLTRB(6.0, 2.0, 6.0, 2.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -412,7 +414,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                     } else if (state is ErrorState) {
                       debugPrint('In HomeScreenTwo else if state is ErrorState: $state');
                     }
-                    return Text('');
+                    return const Text('');
                   },
                 )
               ],
@@ -432,7 +434,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
       //     'checkUserInputHinValidator Straight Year: $straightYearHinFormatResult and HIN: $userInputHin');
       setState(() {
         const snackBar = SnackBar(
-          duration: Duration(seconds: 4),
+          duration: Duration(seconds: 2),
           content: Text(
             'Valid HIN: Straight Year Format',
             style: TextStyle(fontSize: 30.0),
@@ -447,7 +449,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
       // debugPrint('modelYearFormatResult test using RegExp: $modelYearHinFormatResult');
       setState(() {
         const snackBar = SnackBar(
-          duration: Duration(seconds: 4),
+          duration: Duration(seconds: 2),
           content: Text(
             'Valid HIN: Model Year Format',
             style: TextStyle(fontSize: 30.0),
@@ -463,7 +465,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
       // debugPrint('currentHinYearFormatResult test using RegExp: $currentHinYearFormatResult');
       setState(() {
         const snackBar = SnackBar(
-          duration: Duration(seconds: 4),
+          duration: Duration(seconds: 2),
           content: Text(
             'Valid HIN: Current Format',
             style: TextStyle(fontSize: 30.0),
@@ -475,7 +477,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
     if (!modelYearHinFormatResult && !straightYearHinFormatResult && !currentHinYearFormatResult) {
       setState(() {
         const snackBar = SnackBar(
-          duration: Duration(seconds: 4),
+          duration: Duration(seconds: 3),
           content: Text(
             'Please check the HIN Format!',
             style: TextStyle(fontSize: 30.0),
@@ -492,7 +494,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
     if (micFormatAllNumericResult) {
       setState(() {
         const snackBar = SnackBar(
-          duration: Duration(seconds: 4),
+          duration: Duration(seconds: 3),
           content: Text(
             'MIC is incorrect. Please try again!',
             style: TextStyle(fontSize: 30.0),
@@ -508,7 +510,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
     if (userHinEntry.length != 12 || userHinEntry.isEmpty) {
       setState(() {
         const snackBar = SnackBar(
-          duration: Duration(seconds: 4),
+          duration: Duration(seconds: 3),
           content: Text(
             'The HIN is 12 characters. Please try again!',
             style: TextStyle(fontSize: 30.0),

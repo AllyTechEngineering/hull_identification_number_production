@@ -43,13 +43,13 @@ class HinDataCubit extends Cubit<HinDataState> {
   }
 
   List<HinDataModel> decodeHIN(String userInputHin) {
-    String hin = userInputHin; // raw user HIN input with no error checks
+    // String hin = userInputHin; // raw user HIN input with no error checks
     // debugPrint('in decodeHIN at String hin = userInputHin: $hin');
-    String mic = '';
-    String earlyHinWithM = '';
-    String serialNumber = '';
+    // String mic = '';
+    // String earlyHinWithM = '';
+    // String serialNumber = '';
 
-    int currentYearValue = 0;
+    // int currentYearValue = 0;
     List<HinDataModel> micUserDataResult = [];
 
     return micUserDataResult =
@@ -61,18 +61,18 @@ class HinDataCubit extends Cubit<HinDataState> {
     List<HinDataModel> validatedUserHinResults = [];
     RegExp straightYearHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}\d{2}\d{2}$');
     bool straightYearHinFormatResult = straightYearHinFormatRegExp.hasMatch(userInputHin);
+    RegExp currentHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}[A-La-l]{1}\d{1}\d{2}$');
+    bool currentHinYearFormatResult = currentHinFormatRegExp.hasMatch(userInputHin);
+    RegExp modelYearHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}[M-m]{1}\d{2}[A-La-l]{1}$');
+    bool modelYearHinFormatResult = modelYearHinFormatRegExp.hasMatch(userInputHin);
     String straightYearMicResults;
     String straightYearSerialNumberResults;
     String straightYearMonthResults;
     String straightYearYearResults;
-    RegExp modelYearHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}[M-m]{1}\d{2}[A-La-l]{1}$');
-    bool modelYearHinFormatResult = modelYearHinFormatRegExp.hasMatch(userInputHin);
     String modelYearMicResults;
     String modelYearSerialNumberResults;
     String modelYearYearResults;
     String modelYearMonthResults;
-    RegExp currentHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}[A-La-l]{1}\d{1}\d{2}$');
-    bool currentHinYearFormatResult = currentHinFormatRegExp.hasMatch(userInputHin);
     DateTime now = DateTime.now();
     int currentYear = now.year;
     currentYear = currentYear - 2000;
@@ -113,12 +113,9 @@ class HinDataCubit extends Cubit<HinDataState> {
     }
     try {
       if (currentHinYearFormatResult) {
-        // Start: Code to deal with 1980, 1990 and 2000 plus
         currentHinYearFormatModelYearForCheckString = hin.substring(10, 12);
         currentHinYearFormatModelYearForCheckInt =
             int.parse(currentHinYearFormatModelYearForCheckString);
-        debugPrint(
-            'First currentHinYearFormatModelYearForCheckInt: $currentHinYearFormatModelYearForCheckInt');
         // Current Hin for 1984 to 1989
         if (currentHinYearFormatModelYearForCheckInt >= 84 &&
             currentHinYearFormatModelYearForCheckInt <= 89) {
