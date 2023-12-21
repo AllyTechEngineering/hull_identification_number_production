@@ -47,172 +47,170 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              opacity: 1.0,
-              image: AssetImage('assets/images/ocean_background.png'),
-              fit: BoxFit.cover,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            opacity: 1.0,
+            image: AssetImage('assets/images/ocean_background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              children: <Widget>[
+                Container(
+                  width: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                  height: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFFDAFFFB),
+                        Color(0xFF176B87),
+                      ],
+                      stops: [0.0, 0.8],
+                    ),
+                    // color: Colors.deepPurple.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _launchURLBrowser('https://www.linkedin.com/in/bob-taylor-mscs-mba/');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10.0,
+                        // fixedSize: Size((width * 0.75), (height / 5.5)),
+                        fixedSize: Size(
+                            responsiveAdaptiveClass.elevatedButtonWidth =
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                            responsiveAdaptiveClass.elevatedButtonHeight =
+                                responsiveAdaptiveClass.selectElevatedButtonHeight()),
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(width: 3.0, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(35.0),
+                        ),
+                        backgroundColor: Colors.transparent),
+                    child: Text(
+                      'Bob Taylor LinkedIn',
+                      style: TextStyle(
+                          fontSize: responsiveAdaptiveClass.classFontSize =
+                              responsiveAdaptiveClass.selectFontSize(),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  width: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                  height: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFFDAFFFB),
+                        Color(0xFF176B87),
+                      ],
+                      stops: [0.0, 0.8],
+                    ),
+                    // color: Colors.deepPurple.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _launchURLBrowser('https://github.com/AllyTechEngineering/');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10.0,
+                        // fixedSize: Size((width * 0.75), (height / 5.5)),
+                        fixedSize: Size(
+                            responsiveAdaptiveClass.elevatedButtonWidth =
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                            responsiveAdaptiveClass.elevatedButtonHeight =
+                                responsiveAdaptiveClass.selectElevatedButtonHeight()),
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(width: 3.0, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(35.0),
+                        ),
+                        backgroundColor: Colors.transparent),
+                    child: Text(
+                      'Bob Taylor Portfolio',
+                      style: TextStyle(
+                          fontSize: responsiveAdaptiveClass.classFontSize =
+                              responsiveAdaptiveClass.selectFontSize(),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  width: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                  height: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFFDAFFFB),
+                        Color(0xFF176B87),
+                      ],
+                      stops: [0.0, 0.8],
+                    ),
+                    // color: Colors.deepPurple.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _launchURLBrowser('https://allytechllc.com/privacy');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10.0,
+                        // fixedSize: Size((width * 0.75), (height / 5.5)),
+                        fixedSize: Size(
+                            responsiveAdaptiveClass.elevatedButtonWidth =
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                            responsiveAdaptiveClass.elevatedButtonHeight =
+                                responsiveAdaptiveClass.selectElevatedButtonHeight()),
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(width: 3.0, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(35.0),
+                        ),
+                        backgroundColor: Colors.transparent),
+                    child: Text(
+                      'Privacy',
+                      style: TextStyle(
+                          fontSize: responsiveAdaptiveClass.classFontSize =
+                              responsiveAdaptiveClass.selectFontSize(),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+              ],
             ),
           ),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView(
-                children: <Widget>[
-                  Container(
-                    width: responsiveAdaptiveClass.elevatedButtonWidth =
-                        responsiveAdaptiveClass.selectElevatedButtonWidth(),
-                    height: responsiveAdaptiveClass.elevatedButtonWidth =
-                        responsiveAdaptiveClass.selectElevatedButtonHeight(),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xFFDAFFFB),
-                          Color(0xFF176B87),
-                        ],
-                        stops: [0.0, 0.8],
-                      ),
-                      // color: Colors.deepPurple.shade300,
-                      borderRadius: BorderRadius.circular(35.0),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _launchURLBrowser('https://www.linkedin.com/in/bob-taylor-mscs-mba/');
-                      },
-                      style: ElevatedButton.styleFrom(
-                          elevation: 10.0,
-                          // fixedSize: Size((width * 0.75), (height / 5.5)),
-                          fixedSize: Size(
-                              responsiveAdaptiveClass.elevatedButtonWidth =
-                                  responsiveAdaptiveClass.selectElevatedButtonWidth(),
-                              responsiveAdaptiveClass.elevatedButtonHeight =
-                                  responsiveAdaptiveClass.selectElevatedButtonHeight()),
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 3.0, style: BorderStyle.solid),
-                            borderRadius: BorderRadius.circular(35.0),
-                          ),
-                          backgroundColor: Colors.transparent),
-                      child: Text(
-                        'Bob Taylor LinkedIn',
-                        style: TextStyle(
-                            fontSize: responsiveAdaptiveClass.classFontSize =
-                                responsiveAdaptiveClass.selectFontSize(),
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Container(
-                    width: responsiveAdaptiveClass.elevatedButtonWidth =
-                        responsiveAdaptiveClass.selectElevatedButtonWidth(),
-                    height: responsiveAdaptiveClass.elevatedButtonWidth =
-                        responsiveAdaptiveClass.selectElevatedButtonHeight(),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xFFDAFFFB),
-                          Color(0xFF176B87),
-                        ],
-                        stops: [0.0, 0.8],
-                      ),
-                      // color: Colors.deepPurple.shade300,
-                      borderRadius: BorderRadius.circular(35.0),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _launchURLBrowser('https://github.com/AllyTechEngineering/');
-                      },
-                      style: ElevatedButton.styleFrom(
-                          elevation: 10.0,
-                          // fixedSize: Size((width * 0.75), (height / 5.5)),
-                          fixedSize: Size(
-                              responsiveAdaptiveClass.elevatedButtonWidth =
-                                  responsiveAdaptiveClass.selectElevatedButtonWidth(),
-                              responsiveAdaptiveClass.elevatedButtonHeight =
-                                  responsiveAdaptiveClass.selectElevatedButtonHeight()),
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 3.0, style: BorderStyle.solid),
-                            borderRadius: BorderRadius.circular(35.0),
-                          ),
-                          backgroundColor: Colors.transparent),
-                      child: Text(
-                        'Bob Taylor Portfolio',
-                        style: TextStyle(
-                            fontSize: responsiveAdaptiveClass.classFontSize =
-                                responsiveAdaptiveClass.selectFontSize(),
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Container(
-                    width: responsiveAdaptiveClass.elevatedButtonWidth =
-                        responsiveAdaptiveClass.selectElevatedButtonWidth(),
-                    height: responsiveAdaptiveClass.elevatedButtonWidth =
-                        responsiveAdaptiveClass.selectElevatedButtonHeight(),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xFFDAFFFB),
-                          Color(0xFF176B87),
-                        ],
-                        stops: [0.0, 0.8],
-                      ),
-                      // color: Colors.deepPurple.shade300,
-                      borderRadius: BorderRadius.circular(35.0),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _launchURLBrowser('https://allytechllc.com/privacy');
-                      },
-                      style: ElevatedButton.styleFrom(
-                          elevation: 10.0,
-                          // fixedSize: Size((width * 0.75), (height / 5.5)),
-                          fixedSize: Size(
-                              responsiveAdaptiveClass.elevatedButtonWidth =
-                                  responsiveAdaptiveClass.selectElevatedButtonWidth(),
-                              responsiveAdaptiveClass.elevatedButtonHeight =
-                                  responsiveAdaptiveClass.selectElevatedButtonHeight()),
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 3.0, style: BorderStyle.solid),
-                            borderRadius: BorderRadius.circular(35.0),
-                          ),
-                          backgroundColor: Colors.transparent),
-                      child: Text(
-                        'Privacy',
-                        style: TextStyle(
-                            fontSize: responsiveAdaptiveClass.classFontSize =
-                                responsiveAdaptiveClass.selectFontSize(),
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                ],
-              ),
-            ),
-            // child: ElevatedButton(
-            //   onPressed: () => context.go('/'),
-            //   child: const Text('Go back to the Home screen'),
-            // ),
-          ),
+          // child: ElevatedButton(
+          //   onPressed: () => context.go('/'),
+          //   child: const Text('Go back to the Home screen'),
+          // ),
         ),
       ),
     );
@@ -228,4 +226,4 @@ class _SettingsScreenState extends State<SettingsScreen> {
       throw 'Could not launch $url';
     } //else
   } //_launchURLBrowser
-}
+} //class
