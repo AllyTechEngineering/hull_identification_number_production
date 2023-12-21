@@ -43,17 +43,10 @@ class HinDataCubit extends Cubit<HinDataState> {
   }
 
   List<HinDataModel> decodeHIN(String userInputHin) {
-    // String hin = userInputHin; // raw user HIN input with no error checks
-    // debugPrint('in decodeHIN at String hin = userInputHin: $hin');
-    // String mic = '';
-    // String earlyHinWithM = '';
-    // String serialNumber = '';
-
-    // int currentYearValue = 0;
-    List<HinDataModel> micUserDataResult = [];
-
-    return micUserDataResult =
+    List<HinDataModel> micUserDataResult =
         validateHin(userInputHin); // new code to check for the three valid patterns
+
+    return micUserDataResult;
   } //List
 
   List<HinDataModel> validateHin(String userInputHin) {
@@ -61,10 +54,13 @@ class HinDataCubit extends Cubit<HinDataState> {
     List<HinDataModel> validatedUserHinResults = [];
     RegExp straightYearHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}\d{2}\d{2}$');
     bool straightYearHinFormatResult = straightYearHinFormatRegExp.hasMatch(userInputHin);
-    RegExp currentHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}[A-La-l]{1}\d{1}\d{2}$');
-    bool currentHinYearFormatResult = currentHinFormatRegExp.hasMatch(userInputHin);
+
     RegExp modelYearHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}[M-m]{1}\d{2}[A-La-l]{1}$');
     bool modelYearHinFormatResult = modelYearHinFormatRegExp.hasMatch(userInputHin);
+
+    RegExp currentHinFormatRegExp = RegExp(r'^\w{1}[A-Za-z]{2}\w{5}[A-La-l]{1}\d{1}\d{2}$');
+    bool currentHinYearFormatResult = currentHinFormatRegExp.hasMatch(userInputHin);
+
     String straightYearMicResults;
     String straightYearSerialNumberResults;
     String straightYearMonthResults;
@@ -111,12 +107,32 @@ class HinDataCubit extends Cubit<HinDataState> {
       return validatedUserHinResults = modelYearFormatBuildDataModel_1972_1984(modelYearMicResults,
           modelYearSerialNumberResults, modelYearYearResults, modelYearMonthResults);
     }
-    try {
-      if (currentHinYearFormatResult) {
-        currentHinYearFormatModelYearForCheckString = hin.substring(10, 12);
+    if (currentHinYearFormatResult) {
+      currentHinYearFormatModelYearForCheckString = hin.substring(10, 12);
+      if (currentHinYearFormatModelYearForCheckString.isNotEmpty) {
         currentHinYearFormatModelYearForCheckInt =
             int.parse(currentHinYearFormatModelYearForCheckString);
-        // Current Hin for 1984 to 1989
+
+        /// TODO: problem starts here - if 83 is entered have a range error
+        // New Code Starts Here
+        if (currentHinYearFormatModelYearForCheckInt <= 83) {
+          debugPrint(
+              'currentHinYearFormatModelYearForCheckInt is less than 83: $currentHinYearFormatModelYearForCheckInt');
+          String tempErrorValue = 'abc45678h484';
+          currentHinMicResults = tempErrorValue.substring(0, 3);
+          currentHinSerialNumberResults = tempErrorValue.substring(3, 8);
+          currentHinModelYearResults = '19${tempErrorValue.substring(10, 12)}';
+          currentHinProductionYearResults = '198${tempErrorValue.substring(9, 10)}';
+          currentHinProductionMonthResults =
+              decodeHinClass.decodeMonthCurrentFormat(tempErrorValue.substring(8, 9));
+          return validatedUserHinResults = hinCurrentFormatBuildDataModel(
+            currentHinMicResults,
+            currentHinSerialNumberResults,
+            currentHinProductionMonthResults,
+            currentHinProductionYearResults,
+            currentHinModelYearResults,
+          );
+        }
         if (currentHinYearFormatModelYearForCheckInt >= 84 &&
             currentHinYearFormatModelYearForCheckInt <= 89) {
           currentHinMicResults = hin.substring(0, 3);
@@ -209,9 +225,7 @@ class HinDataCubit extends Cubit<HinDataState> {
             currentHinModelYearResults,
           );
         }
-      } //if (currentHinYearFormatResult)
-    } catch (e) {
-      debugPrint('Current Hin Try Catch error: $e');
+      }
     }
     if (currentHinYearFormatResult) {
       // Start: Code to deal with 1980, 1990 and 2000 plus

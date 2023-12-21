@@ -21,57 +21,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
     responsiveAdaptiveClass.size = MediaQuery.of(context).size;
     responsiveAdaptiveClass.height = responsiveAdaptiveClass.size.height;
     responsiveAdaptiveClass.width = responsiveAdaptiveClass.size.width;
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_circle_left_outlined,
+    return MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_circle_left_outlined,
+            ),
+            onPressed: () => context.go('/'),
           ),
-          onPressed: () => context.go('/'),
-        ),
-        title: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            'About the Developer',
+          centerTitle: true,
+          title: Text(
+            'About',
             style: TextStyle(
                 fontSize: responsiveAdaptiveClass.appBarTitleFontSize =
-                    responsiveAdaptiveClass.selectAppBarTitleFontSize()),
+                    responsiveAdaptiveClass.selectAppBarTitleFontSize(1.0)),
           ),
-        ),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/ocean_background.png'),
-              fit: BoxFit.fill,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('lib/assets/images/ocean_background.png'),
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            opacity: 1.0,
-            image: AssetImage('assets/images/ocean_background.png'),
-            fit: BoxFit.cover,
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              opacity: 1.0,
+              image: AssetImage('assets/images/ocean_background.png'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView(
               children: <Widget>[
                 Container(
                   width: responsiveAdaptiveClass.elevatedButtonWidth =
-                      responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(1),
                   height: responsiveAdaptiveClass.elevatedButtonWidth =
-                      responsiveAdaptiveClass.selectElevatedButtonHeight(),
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(1.2),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color(0xFFDAFFFB),
-                        Color(0xFF176B87),
+                        Color(0xFF2D9596),
+                        Color(0xFF265073),
                       ],
                       stops: [0.0, 0.8],
                     ),
@@ -87,39 +86,42 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         // fixedSize: Size((width * 0.75), (height / 5.5)),
                         fixedSize: Size(
                             responsiveAdaptiveClass.elevatedButtonWidth =
-                                responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(1),
                             responsiveAdaptiveClass.elevatedButtonHeight =
-                                responsiveAdaptiveClass.selectElevatedButtonHeight()),
+                                responsiveAdaptiveClass.selectElevatedButtonHeight(1.2)),
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 3.0, style: BorderStyle.solid),
+                          side: const BorderSide(width: 3.0, style: BorderStyle.solid),
                           borderRadius: BorderRadius.circular(35.0),
                         ),
                         backgroundColor: Colors.transparent),
-                    child: Text(
-                      'Bob Taylor LinkedIn',
-                      style: TextStyle(
-                          fontSize: responsiveAdaptiveClass.classFontSize =
-                              responsiveAdaptiveClass.selectFontSize(),
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Bob Taylor LinkedIn',
+                        style: TextStyle(
+                            fontSize: responsiveAdaptiveClass.classFontSize =
+                                responsiveAdaptiveClass.selectFontSize(1.0),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(
                   width: responsiveAdaptiveClass.elevatedButtonWidth =
-                      responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(1),
                   height: responsiveAdaptiveClass.elevatedButtonWidth =
-                      responsiveAdaptiveClass.selectElevatedButtonHeight(),
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(1),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color(0xFFDAFFFB),
-                        Color(0xFF176B87),
+                        Color(0xFF2D9596),
+                        Color(0xFF265073),
                       ],
                       stops: [0.0, 0.8],
                     ),
@@ -135,39 +137,42 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         // fixedSize: Size((width * 0.75), (height / 5.5)),
                         fixedSize: Size(
                             responsiveAdaptiveClass.elevatedButtonWidth =
-                                responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(1),
                             responsiveAdaptiveClass.elevatedButtonHeight =
-                                responsiveAdaptiveClass.selectElevatedButtonHeight()),
+                                responsiveAdaptiveClass.selectElevatedButtonHeight(1.2)),
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 3.0, style: BorderStyle.solid),
+                          side: const BorderSide(width: 3.0, style: BorderStyle.solid),
                           borderRadius: BorderRadius.circular(35.0),
                         ),
                         backgroundColor: Colors.transparent),
-                    child: Text(
-                      'Bob Taylor Portfolio',
-                      style: TextStyle(
-                          fontSize: responsiveAdaptiveClass.classFontSize =
-                              responsiveAdaptiveClass.selectFontSize(),
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Bob Taylor Portfolio',
+                        style: TextStyle(
+                            fontSize: responsiveAdaptiveClass.classFontSize =
+                                responsiveAdaptiveClass.selectFontSize(1.0),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(
                   width: responsiveAdaptiveClass.elevatedButtonWidth =
-                      responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(1),
                   height: responsiveAdaptiveClass.elevatedButtonWidth =
-                      responsiveAdaptiveClass.selectElevatedButtonHeight(),
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(1.2),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color(0xFFDAFFFB),
-                        Color(0xFF176B87),
+                        Color(0xFF2D9596),
+                        Color(0xFF265073),
                       ],
                       stops: [0.0, 0.8],
                     ),
@@ -183,34 +188,238 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         // fixedSize: Size((width * 0.75), (height / 5.5)),
                         fixedSize: Size(
                             responsiveAdaptiveClass.elevatedButtonWidth =
-                                responsiveAdaptiveClass.selectElevatedButtonWidth(),
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(1),
                             responsiveAdaptiveClass.elevatedButtonHeight =
-                                responsiveAdaptiveClass.selectElevatedButtonHeight()),
+                                responsiveAdaptiveClass.selectElevatedButtonHeight(1.2)),
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 3.0, style: BorderStyle.solid),
+                          side: const BorderSide(width: 3.0, style: BorderStyle.solid),
                           borderRadius: BorderRadius.circular(35.0),
                         ),
                         backgroundColor: Colors.transparent),
-                    child: Text(
-                      'Privacy',
-                      style: TextStyle(
-                          fontSize: responsiveAdaptiveClass.classFontSize =
-                              responsiveAdaptiveClass.selectFontSize(),
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Privacy Policy & \nCopyright 2023-2024',
+                        style: TextStyle(
+                            fontSize: responsiveAdaptiveClass.classFontSize =
+                                responsiveAdaptiveClass.selectFontSize(1.0),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
+                ),
+                Container(
+                  width: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                  height: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(1.3),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFF2D9596),
+                        Color(0xFF265073),
+                      ],
+                      stops: [0.0, 0.8],
+                    ),
+                    // color: Colors.deepPurple.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _launchURLBrowser(
+                          'https://apps.apple.com/us/app/boat-hin-decoder/id6474098761');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10.0,
+                        // fixedSize: Size((width * 0.75), (height / 5.5)),
+                        fixedSize: Size(
+                            responsiveAdaptiveClass.elevatedButtonWidth =
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                            responsiveAdaptiveClass.elevatedButtonHeight =
+                                responsiveAdaptiveClass.selectElevatedButtonHeight(1.4)),
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(width: 3.0, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(35.0),
+                        ),
+                        backgroundColor: Colors.transparent),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Other Apps by the Developer:\nHIN Decoder App',
+                        style: TextStyle(
+                            fontSize: responsiveAdaptiveClass.classFontSize =
+                                responsiveAdaptiveClass.selectFontSize(1.0),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  width: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                  height: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(1.2),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFF2D9596),
+                        Color(0xFF265073),
+                      ],
+                      stops: [0.0, 0.8],
+                    ),
+                    // color: Colors.deepPurple.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _launchURLBrowser(
+                          'https://apps.apple.com/us/app/sailboat-racing-signals/id6474488492');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10.0,
+                        // fixedSize: Size((width * 0.75), (height / 5.5)),
+                        fixedSize: Size(
+                            responsiveAdaptiveClass.elevatedButtonWidth =
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                            responsiveAdaptiveClass.elevatedButtonHeight =
+                                responsiveAdaptiveClass.selectElevatedButtonHeight(1.4)),
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(width: 3.0, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(35.0),
+                        ),
+                        backgroundColor: Colors.transparent),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Other Apps by the Developer:\nSailboat Racing Signals',
+                        style: TextStyle(
+                            fontSize: responsiveAdaptiveClass.classFontSize =
+                                responsiveAdaptiveClass.selectFontSize(1.0),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  width: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                  height: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(1.4),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFF2D9596),
+                        Color(0xFF265073),
+                      ],
+                      stops: [0.0, 0.8],
+                    ),
+                    // color: Colors.deepPurple.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _launchURLBrowser(
+                          'https://apps.apple.com/us/app/real-time-wind-report-sailing/id6450426585');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10.0,
+                        // fixedSize: Size((width * 0.75), (height / 5.5)),
+                        fixedSize: Size(
+                            responsiveAdaptiveClass.elevatedButtonWidth =
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                            responsiveAdaptiveClass.elevatedButtonHeight =
+                                responsiveAdaptiveClass.selectElevatedButtonHeight(1.4)),
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(width: 3.0, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(35.0),
+                        ),
+                        backgroundColor: Colors.transparent),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Other Apps by the Developer:\nReal Time Wind Report Sailing',
+                        style: TextStyle(
+                            fontSize: responsiveAdaptiveClass.classFontSize =
+                                responsiveAdaptiveClass.selectFontSize(1.0),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  width: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                  height: responsiveAdaptiveClass.elevatedButtonWidth =
+                      responsiveAdaptiveClass.selectElevatedButtonHeight(1.4),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFF2D9596),
+                        Color(0xFF265073),
+                      ],
+                      stops: [0.0, 0.8],
+                    ),
+                    // color: Colors.deepPurple.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _launchURLBrowser(
+                          'https://apps.apple.com/us/app/sunfish-sailboat-basic-rigging/id6466507022');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10.0,
+                        // fixedSize: Size((width * 0.75), (height / 5.5)),
+                        fixedSize: Size(
+                            responsiveAdaptiveClass.elevatedButtonWidth =
+                                responsiveAdaptiveClass.selectElevatedButtonWidth(1),
+                            responsiveAdaptiveClass.elevatedButtonHeight =
+                                responsiveAdaptiveClass.selectElevatedButtonHeight(1.4)),
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(width: 3.0, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(35.0),
+                        ),
+                        backgroundColor: Colors.transparent),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Other Apps by the Developer:\nSunfish Sailboat Basic Rigging',
+                        style: TextStyle(
+                            fontSize: responsiveAdaptiveClass.classFontSize =
+                                responsiveAdaptiveClass.selectFontSize(1.0),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
-          // child: ElevatedButton(
-          //   onPressed: () => context.go('/'),
-          //   child: const Text('Go back to the Home screen'),
-          // ),
         ),
       ),
     );
@@ -219,10 +428,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   _launchURLBrowser(String urlValue) async {
     var url = Uri.parse(urlValue);
     if (await canLaunchUrl(url)) {
-      print('Inside of if means canLaunchUrl ok');
+      debugPrint('Inside of if means canLaunchUrl ok');
       await launchUrl(url);
     } else {
-      print('After the else means an error: $url');
+      debugPrint('After the else means an error: $url');
       throw 'Could not launch $url';
     } //else
   } //_launchURLBrowser
