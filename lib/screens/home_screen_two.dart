@@ -507,19 +507,32 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
       if (tempCurrentHinYearValue.isNotEmpty) {
         int tempCurrentHinYear = int.parse(tempCurrentHinYearValue);
         if (tempCurrentHinYear <= 83) {
-          debugPrint('Current HIN: 1984 to Present - Please Check Input $tempCurrentHinYear');
-          setState(() {
-            const snackBar = SnackBar(
-              duration: Duration(seconds: 3),
-              content: Text(
-                'Check last two digits: Current HIN years are 84 to present.',
-                style: TextStyle(fontSize: 30.0),
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          });
-          return;
-        } else if (tempCurrentHinYear >= 84) {
+          if (tempCurrentHinYear >= 60) {
+            debugPrint('Current HIN: 1984 to Present - Please Check Input $tempCurrentHinYear');
+            setState(() {
+              const snackBar = SnackBar(
+                duration: Duration(seconds: 4),
+                content: Text(
+                  'Error! the last 2 digits of the current HIN years are 84 to present.',
+                  style: TextStyle(fontSize: 30.0),
+                ),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            });
+            return;
+          } else if (tempCurrentHinYear >= 0) {
+            setState(() {
+              const snackBar = SnackBar(
+                duration: Duration(seconds: 2),
+                content: Text(
+                  'Current HIN Format',
+                  style: TextStyle(fontSize: 30.0),
+                ),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            });
+          }
+        } else if (tempCurrentHinYear >= 0) {
           setState(() {
             const snackBar = SnackBar(
               duration: Duration(seconds: 2),

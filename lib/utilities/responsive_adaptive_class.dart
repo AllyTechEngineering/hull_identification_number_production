@@ -184,7 +184,7 @@ class ResponsiveAdaptiveClass {
         return classFontSize;
       } else if ((orientation == Orientation.landscape) && ((width == 1024) && (height == 768))) {
         debugPrint('in else landscape: iPads: 768 w x 1024  h');
-        classFontSize = 30.0 * scaleFactor;
+        classFontSize = 18.0 * scaleFactor;
         return classFontSize;
       }
       // iPads: 810 w x 1080  h
@@ -192,11 +192,11 @@ class ResponsiveAdaptiveClass {
       // iPad 8th gen
       // iPad 7th gen
       if ((orientation == Orientation.portrait) && ((width == 810) && (height == 1080))) {
-        classFontSize = 22.0 * scaleFactor;
+        classFontSize = 20.0 * scaleFactor;
         return classFontSize;
       } else if ((orientation == Orientation.landscape) && ((width == 1080) && (height == 810))) {
         debugPrint('in else landscape: iPads: 810 w x 1080  h');
-        classFontSize = 30.0 * scaleFactor;
+        classFontSize = 18.0 * scaleFactor;
         return classFontSize;
       }
       // iPads: 834 w x 1112  h
@@ -204,23 +204,23 @@ class ResponsiveAdaptiveClass {
       // iPad Pro (2nd gen 10.5")
       if ((orientation == Orientation.portrait) && ((width == 834) && (height == 1112))) {
         debugPrint('in else portrait fonts: Pad Pro (2nd gen 10.5"): 834 w x 1112  h');
-        classFontSize = 22.0 * scaleFactor;
+        classFontSize = 20.0 * scaleFactor;
         return classFontSize;
       } else if ((orientation == Orientation.landscape) && ((width == 1112) && (height == 834))) {
         debugPrint('in else landscape fonts: Pad Pro (2nd gen 10.5"): 834 w x 1112  h');
-        classFontSize = 30.0 * scaleFactor;
+        classFontSize = 18.0 * scaleFactor;
         return classFontSize;
       }
       // iPads: 744.0 w x 1113.0  h
       // iPad Mini (6th gen)
       if ((orientation == Orientation.portrait) && ((width == 744.0) && (height == 1133.0))) {
         debugPrint('in else portrait fonts: iPad Mini (6th gen): 744.0 w x 1113.0  h');
-        classFontSize = 22.0 * scaleFactor;
+        classFontSize = 20.0 * scaleFactor;
         return classFontSize;
       } else if ((orientation == Orientation.landscape) &&
           ((width == 1133.0) && (height == 744.0))) {
         debugPrint('in else landscape fonts: iPad Mini (6th gen): 744.0 w x 1113  h');
-        classFontSize = 30.0 * scaleFactor;
+        classFontSize = 18.0 * scaleFactor;
         return classFontSize;
       }
       // iPads: 820 w x 1180  h
@@ -228,11 +228,11 @@ class ResponsiveAdaptiveClass {
       // iPad Air (5th gen)
       // iPad Air (4th gen)
       if ((orientation == Orientation.portrait) && ((width == 820) && (height == 1180))) {
-        classFontSize = 22.0 * scaleFactor;
+        classFontSize = 20.0 * scaleFactor;
         return classFontSize;
       } else if ((orientation == Orientation.landscape) && ((width == 1180) && (height == 820))) {
         debugPrint('in else landscape: iPads: 820 w x 1180  h');
-        classFontSize = 30.0 * scaleFactor;
+        classFontSize = 18.0 * scaleFactor;
         return classFontSize;
       }
       // iPads: 834 w x 1194  h
@@ -241,11 +241,11 @@ class ResponsiveAdaptiveClass {
       // iPad Pro (4th gen 11")
       // iPad Pro (3rd gen 11")
       if ((orientation == Orientation.portrait) && ((width == 834) && (height == 1194))) {
-        classFontSize = 22.0 * scaleFactor;
+        classFontSize = 20.0 * scaleFactor;
         return classFontSize;
       } else if ((orientation == Orientation.landscape) && ((width == 1194) && (height == 834))) {
         debugPrint('in else landscape: iPads: 834 w x 1194  h');
-        classFontSize = 30.0 * scaleFactor;
+        classFontSize = 18.0 * scaleFactor;
         return classFontSize;
       }
       // iPads: 1024 w x 1366  h
@@ -261,7 +261,7 @@ class ResponsiveAdaptiveClass {
         return classFontSize;
       } else if ((orientation == Orientation.landscape) && ((width == 1366) && (height == 1024))) {
         debugPrint('in else font landscape: iPads: 1024 w x 1366  h');
-        classFontSize = 30.0 * scaleFactor;
+        classFontSize = 18.0 * scaleFactor;
         return classFontSize;
       }
     } //if platform
@@ -744,11 +744,11 @@ class ResponsiveAdaptiveClass {
       // iPad 2
       // iPad 1st gen
       if ((orientation == Orientation.portrait) && ((width == 768) && (height == 1024))) {
-        elevatedButtonHeight = height / 15.0 * scaleFactor;
+        elevatedButtonHeight = height / 12.0 * scaleFactor;
         return elevatedButtonHeight;
       } else if ((orientation == Orientation.landscape) && ((width == 1024) && (height == 768))) {
         debugPrint('in else landscape: iPads: 768 w x 1024  h');
-        elevatedButtonHeight = height / 6.6 * scaleFactor;
+        elevatedButtonHeight = height / 8.0 * scaleFactor;
         return elevatedButtonHeight;
       }
       // iPads: 810 w x 1080  h
@@ -756,11 +756,11 @@ class ResponsiveAdaptiveClass {
       // iPad 8th gen
       // iPad 7th gen
       if ((orientation == Orientation.portrait) && ((width == 810) && (height == 1080))) {
-        elevatedButtonHeight = height / 15.0 * scaleFactor;
+        elevatedButtonHeight = height / 12.0 * scaleFactor;
         return elevatedButtonHeight;
       } else if ((orientation == Orientation.landscape) && ((width == 1080) && (height == 810))) {
         debugPrint('in else landscape: iPads: 810 w x 1080  h');
-        elevatedButtonHeight = height / 6.6 * scaleFactor;
+        elevatedButtonHeight = height / 8.0 * scaleFactor;
         return elevatedButtonHeight;
       }
       // iPads: 834 w x 1112  h
@@ -783,7 +783,7 @@ class ResponsiveAdaptiveClass {
       } else if ((orientation == Orientation.landscape) &&
           ((width == 1133.0) && (height == 744.0))) {
         debugPrint('in else landscape button: iPad Mini (6th gen): 744.0 w x 1113.0  h');
-        elevatedButtonHeight = height / 6.6 * scaleFactor;
+        elevatedButtonHeight = height / 8.5 * scaleFactor;
         return elevatedButtonHeight;
       }
       // iPads: 820 w x 1180  h
