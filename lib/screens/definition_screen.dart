@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../utilities/responsive_adaptive_class.dart';
+import '../utilities/calculate_button_size_class.dart';
+import '../utilities/calculate_font_size_class.dart';
+import '../widgets/background_decoration.dart';
 // import 'package:hull_identification_number/blocs/data/mic_data_cubit.dart';
 // import 'package:hull_identification_number/models/mic_data_model.dart';
 // import 'package:hull_identification_number/repositories/mic_repository.dart';
@@ -14,16 +16,21 @@ class DefinitionScreen extends StatefulWidget {
 }
 
 class _DefinitionScreenState extends State<DefinitionScreen> {
-  final ResponsiveAdaptiveClass responsiveAdaptiveClass = ResponsiveAdaptiveClass();
+  final CalculateFontSizeClass calculateFontSizeClass = CalculateFontSizeClass();
+  final CalculateButtonSizeClass calculateButtonSizeClass = CalculateButtonSizeClass();
+  dynamic orientation, size, height, width;
+  double elevatedButtonWidth = 0.0;
+  double elevatedButtonHeight = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    responsiveAdaptiveClass.orientation = MediaQuery.of(context).orientation;
-    responsiveAdaptiveClass.size = MediaQuery.of(context).size;
-    responsiveAdaptiveClass.height = responsiveAdaptiveClass.size.height;
-    responsiveAdaptiveClass.width = responsiveAdaptiveClass.size.width;
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
+    elevatedButtonWidth = calculateButtonSizeClass.calculateButtonWidth(context);
+    elevatedButtonHeight = calculateButtonSizeClass.calculateButtonHeight(context);
+    // debugPrint('Home Screen width = $width\nHome Screen height = $height');
     return MediaQuery(
-      data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+      data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -36,9 +43,9 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
             fit: BoxFit.scaleDown,
             child: Text(
               'FAQ',
-              style: TextStyle(
-                  fontSize: responsiveAdaptiveClass.appBarTitleFontSize =
-                      responsiveAdaptiveClass.selectAppBarTitleFontSize(1.0)),
+              style: Theme.of(context).textTheme.displayLarge,
+              softWrap: true,
+              textAlign: TextAlign.center,
             ),
           ),
           actions: <Widget>[
@@ -50,12 +57,7 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
             ),
           ],
           flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/ocean_background.png'),
-                fit: BoxFit.fill,
-              ),
-            ),
+            decoration: BackgroundDecoration.backgroundImageDecoration,
           ),
         ),
         body: SafeArea(
@@ -78,29 +80,23 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
                             ),
                           ),
                         ),
-                        Container(
-                          child: Image.asset(
-                            'assets/images/Straight-Format.png',
-                            fit: BoxFit.cover,
-                          ),
+                        Image.asset(
+                          'assets/images/straight_year_format.png',
+                          fit: BoxFit.cover,
                         ),
                         const Divider(
                           thickness: 2.0,
                         ),
-                        Container(
-                          child: Image.asset(
-                            'assets/images/Model-Year-Format.png',
-                            fit: BoxFit.cover,
-                          ),
+                        Image.asset(
+                          'assets/images/model_year_format.png',
+                          fit: BoxFit.cover,
                         ),
                         const Divider(
                           thickness: 2.0,
                         ),
-                        Container(
-                          child: Image.asset(
-                            'assets/images/Current-Format.png',
-                            fit: BoxFit.cover,
-                          ),
+                        Image.asset(
+                          'assets/images/current_format.png',
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),

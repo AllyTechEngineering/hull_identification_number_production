@@ -1,14 +1,16 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:hull_identification_number/utilities/app_theme_data_class.dart';
 import 'blocs/mic_data/mic_data_cubit.dart';
 import 'blocs/hin_data/hin_data_cubit.dart';
 import 'repositories/mic_repository.dart';
 import 'screens/definition_screen.dart';
 import 'screens/home_screen_two.dart';
 import 'screens/settings_screen.dart';
-import 'utilities/theme.dart';
+// import 'utilities/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,12 +37,6 @@ final GoRouter _router = GoRouter(
             return const SettingsScreen();
           },
         ),
-        // GoRoute(
-        //   path: 'data_table_list_screen',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return DataListScreen();
-        //   },
-        // ),
       ],
     ),
   ],
@@ -65,10 +61,19 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp.router(
+          scrollBehavior: const MaterialScrollBehavior().copyWith(
+            dragDevices: {
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.touch,
+              PointerDeviceKind.stylus,
+              PointerDeviceKind.unknown
+            },
+          ),
           debugShowCheckedModeBanner: false,
           routerConfig: _router,
           title: 'Portsmouth',
-          theme: appTheme,
+          // theme: appTheme,
+          theme: AppThemeDataClass().getAppTheme(context),
         ),
       ),
     );

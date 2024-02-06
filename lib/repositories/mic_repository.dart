@@ -9,9 +9,11 @@ import '../models/mic_data_model.dart';
 
 class MicRepository {
   Future<List<MicDataModel>> getMicData(String userMicEnteredValue) async {
+    debugPrint('in MicRepository userMicEnteredValue = $userMicEnteredValue ');
     try {
       if (userMicEnteredValue.isEmpty) {
         userMicEnteredValue = '';
+        debugPrint('in if (userMicEnteredValue.isEmpty): $userMicEnteredValue ');
       }
       final String micDataFile =
           await rootBundle.loadString('lib/mic_data/modified_mic_data_v2.json');
@@ -29,7 +31,7 @@ class MicRepository {
           },
         ),
       );
-      // debugPrint('this is micDataList: $micDataList');
+      debugPrint('this is micDataList: $micDataList');
       return micDataList;
     } catch (e) {
       debugPrint('Error e: $e');
