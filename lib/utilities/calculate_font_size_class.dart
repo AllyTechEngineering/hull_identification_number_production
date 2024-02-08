@@ -16,6 +16,7 @@ class CalculateFontSizeClass {
 
     dynamic androidDeviceActualPixelWidth = (devicePixelRatioValue * width);
     dynamic androidDeviceActualPixelHeight = (devicePixelRatioValue * height);
+
     adjustedFontSize = androidDeviceActualPixelWidth / androidDeviceActualPixelHeight * 10;
     if (Platform.isIOS) {
       // iPhones: 320 w x 568 h
@@ -267,244 +268,276 @@ class CalculateFontSizeClass {
       }
     }
     if (Platform.isAndroid) {
-      //portrait
-      debugPrint(
-          'Android Device Font: Orientation: $orientation\nandroidDeviceActualPixelWidth: $androidDeviceActualPixelWidth\nandroidDeviceActualPixelHeight: $androidDeviceActualPixelHeight\nadjustedFontSize: $adjustedFontSize');
-      if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 400 && androidDeviceActualPixelHeight <= 499)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 500 && androidDeviceActualPixelHeight <= 599)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 600 && androidDeviceActualPixelHeight <= 699)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 700 && androidDeviceActualPixelHeight <= 799)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 800 && androidDeviceActualPixelHeight <= 899)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 900 && androidDeviceActualPixelHeight <= 999)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1000 && androidDeviceActualPixelHeight <= 1099)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1100 && androidDeviceActualPixelHeight <= 1199)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1200 && androidDeviceActualPixelHeight <= 1299)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1300 && androidDeviceActualPixelHeight <= 1399)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1400 && androidDeviceActualPixelHeight <= 1499)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1500 && androidDeviceActualPixelHeight <= 1599)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1600 && androidDeviceActualPixelHeight <= 1699)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1700 && androidDeviceActualPixelHeight <= 1799)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1800 && androidDeviceActualPixelHeight <= 1899)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 1900 && androidDeviceActualPixelHeight <= 1999)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.010;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2000 && androidDeviceActualPixelHeight <= 2099)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.010;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2100 && androidDeviceActualPixelHeight <= 2199)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.010;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2200 && androidDeviceActualPixelHeight <= 2299)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.010;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2300 && androidDeviceActualPixelHeight <= 2399)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2400 && androidDeviceActualPixelHeight <= 2499)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2500 && androidDeviceActualPixelHeight <= 2599)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2600 && androidDeviceActualPixelHeight <= 2699)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2700 && androidDeviceActualPixelHeight <= 2799)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.008;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2800 && androidDeviceActualPixelHeight <= 2899)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 2900 && androidDeviceActualPixelHeight <= 2999)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 3000 && androidDeviceActualPixelHeight <= 3099)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 3100 && androidDeviceActualPixelHeight <= 3199)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.008;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.portrait &&
-          (androidDeviceActualPixelHeight >= 3200 && androidDeviceActualPixelHeight <= 3299)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.008;
-        return adjustedFontSize;
+      //portrait font size
+      if (orientation == Orientation.portrait) {
+        if ((androidDeviceActualPixelHeight >= 400 && androidDeviceActualPixelHeight <= 499)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 500 &&
+            androidDeviceActualPixelHeight <= 599)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 600 &&
+            androidDeviceActualPixelHeight <= 699)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 700 &&
+            androidDeviceActualPixelHeight <= 799)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 800 &&
+            androidDeviceActualPixelHeight <= 899)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 900 &&
+            androidDeviceActualPixelHeight <= 999)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1000 &&
+            androidDeviceActualPixelHeight <= 1099)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1100 &&
+            androidDeviceActualPixelHeight <= 1199)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight == 1211)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1200 &&
+            androidDeviceActualPixelHeight <= 1299)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1300 &&
+            androidDeviceActualPixelHeight <= 1399)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.015;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1400 &&
+            androidDeviceActualPixelHeight <= 1499)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1500 &&
+            androidDeviceActualPixelHeight <= 1599)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1600 &&
+            androidDeviceActualPixelHeight <= 1699)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1700 &&
+            androidDeviceActualPixelHeight <= 1799)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight == 1845.0 &&
+            androidDeviceActualPixelWidth == 1200.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.021;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1800 &&
+            androidDeviceActualPixelHeight <= 1899 &&
+            androidDeviceActualPixelWidth != 1200.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.012;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight == 1917.0 &&
+            androidDeviceActualPixelWidth == 1200.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.019;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1900 &&
+            androidDeviceActualPixelHeight <= 1999 &&
+            androidDeviceActualPixelWidth != 1200.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2000 &&
+            androidDeviceActualPixelHeight <= 2099)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.010;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2100 &&
+            androidDeviceActualPixelHeight <= 2199)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.010;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight == 2214.0 &&
+            androidDeviceActualPixelWidth == 1440.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.018;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2200 &&
+            androidDeviceActualPixelHeight <= 2299 &&
+            androidDeviceActualPixelWidth != 1440.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.010;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2300 &&
+            androidDeviceActualPixelHeight <= 2399)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2400 &&
+            androidDeviceActualPixelHeight <= 2499)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2500 &&
+            androidDeviceActualPixelHeight <= 2599)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2600 &&
+            androidDeviceActualPixelHeight <= 2699)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2700 &&
+            androidDeviceActualPixelHeight <= 2799)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.008;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2800 &&
+            androidDeviceActualPixelHeight <= 2899)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2900 &&
+            androidDeviceActualPixelHeight <= 2999)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 3000 &&
+            androidDeviceActualPixelHeight <= 3099)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.0085;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 3100 &&
+            androidDeviceActualPixelHeight <= 3199)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.008;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 3200 &&
+            androidDeviceActualPixelHeight <= 3299)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.008;
+          return adjustedFontSize;
+        }
       }
-// landscape
-      if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 400 && androidDeviceActualPixelHeight <= 499)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.04;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 500 && androidDeviceActualPixelHeight <= 599)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 600 && androidDeviceActualPixelHeight <= 699)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 700 && androidDeviceActualPixelHeight <= 799)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.035;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 800 && androidDeviceActualPixelHeight <= 899)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 900 && androidDeviceActualPixelHeight <= 999)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1000 && androidDeviceActualPixelHeight <= 1099)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.019;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1100 && androidDeviceActualPixelHeight <= 1199)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.019;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1200 && androidDeviceActualPixelHeight <= 1299)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.019;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1300 && androidDeviceActualPixelHeight <= 1399)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        debugPrint('adjustedFontSize: $adjustedFontSize');
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1400 && androidDeviceActualPixelHeight <= 1499)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1500 && androidDeviceActualPixelHeight <= 1599)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1600 && androidDeviceActualPixelHeight <= 1699)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1700 && androidDeviceActualPixelHeight <= 1799)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1800 && androidDeviceActualPixelHeight <= 1899)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 1900 && androidDeviceActualPixelHeight <= 1999)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2000 && androidDeviceActualPixelHeight <= 2099)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2100 && androidDeviceActualPixelHeight <= 2199)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2200 && androidDeviceActualPixelHeight <= 2299)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2300 && androidDeviceActualPixelHeight <= 2399)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2400 && androidDeviceActualPixelHeight <= 2499)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2500 && androidDeviceActualPixelHeight <= 2599)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2600 && androidDeviceActualPixelHeight <= 2699)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2700 && androidDeviceActualPixelHeight <= 2799)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2800 && androidDeviceActualPixelHeight <= 2899)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 2900 && androidDeviceActualPixelHeight <= 2999)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 3000 && androidDeviceActualPixelHeight <= 3099)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 3100 && androidDeviceActualPixelHeight <= 3199)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
-      } else if (orientation == Orientation.landscape &&
-          (androidDeviceActualPixelHeight >= 3200 && androidDeviceActualPixelHeight <= 3299)) {
-        adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
-        return adjustedFontSize;
+      // landscape font size
+      if (orientation == Orientation.landscape) {
+        if ((androidDeviceActualPixelHeight >= 400 && androidDeviceActualPixelHeight <= 499)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.04;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 500 &&
+            androidDeviceActualPixelHeight <= 599)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 600 &&
+            androidDeviceActualPixelHeight <= 699)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 700 &&
+            androidDeviceActualPixelHeight <= 799)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.035;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 800 &&
+            androidDeviceActualPixelHeight <= 899)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 900 &&
+            androidDeviceActualPixelHeight <= 999)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.025;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1000 &&
+            androidDeviceActualPixelHeight <= 1099)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.019;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight == 1117.0 &&
+            androidDeviceActualPixelWidth == 2000.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.03;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight == 1125.0 &&
+            androidDeviceActualPixelWidth == 1920.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.035;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1100 &&
+            androidDeviceActualPixelHeight <= 1199 &&
+            androidDeviceActualPixelWidth != 1920.0 &&
+            androidDeviceActualPixelWidth != 2000.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.019;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1200 &&
+            androidDeviceActualPixelHeight <= 1299)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.019;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight == 1350.0 &&
+            androidDeviceActualPixelWidth == 2304.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.03;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1300 &&
+            androidDeviceActualPixelHeight <= 1399 &&
+            androidDeviceActualPixelWidth != 2304.0)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1400 &&
+            androidDeviceActualPixelHeight <= 1499)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1500 &&
+            androidDeviceActualPixelHeight <= 1599)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1600 &&
+            androidDeviceActualPixelHeight <= 1699)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1700 &&
+            androidDeviceActualPixelHeight <= 1799)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1800 &&
+            androidDeviceActualPixelHeight <= 1899)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 1900 &&
+            androidDeviceActualPixelHeight <= 1999)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2000 &&
+            androidDeviceActualPixelHeight <= 2099)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2100 &&
+            androidDeviceActualPixelHeight <= 2199)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2200 &&
+            androidDeviceActualPixelHeight <= 2299)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2300 &&
+            androidDeviceActualPixelHeight <= 2399)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2400 &&
+            androidDeviceActualPixelHeight <= 2499)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2500 &&
+            androidDeviceActualPixelHeight <= 2599)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2600 &&
+            androidDeviceActualPixelHeight <= 2699)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2700 &&
+            androidDeviceActualPixelHeight <= 2799)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2800 &&
+            androidDeviceActualPixelHeight <= 2899)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 2900 &&
+            androidDeviceActualPixelHeight <= 2999)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 3000 &&
+            androidDeviceActualPixelHeight <= 3099)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 3100 &&
+            androidDeviceActualPixelHeight <= 3199)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        } else if ((androidDeviceActualPixelHeight >= 3200 &&
+            androidDeviceActualPixelHeight <= 3299)) {
+          adjustedFontSize = androidDeviceActualPixelHeight * 0.02;
+          return adjustedFontSize;
+        }
       }
     }
     return adjustedFontSize = 20.0;

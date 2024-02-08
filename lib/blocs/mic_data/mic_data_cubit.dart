@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../models/mic_data_model.dart';
@@ -15,34 +15,33 @@ class MicDataCubit extends Cubit<MicDataState> {
   }
   void getUserEnteredMicData(String userEnteredHinMic) async {
     List<MicDataModel>;
-    debugPrint(' in getUserEnteredMicData and getUserEnteredMicData is: $userEnteredHinMic');
+    //debugPrint(' in getUserEnteredMicData and getUserEnteredMicData is: $userEnteredHinMic');
     // String validMicFromSubString;
     RegExp validateUserEnteredMicDataFromHin = RegExp(r'^[a-zA-Z0-9][a-zA-Z][a-zA-Z]$');
     if (userEnteredHinMic.isEmpty) {
-      debugPrint('in if (userEnteredHinMic.isEmpty)');
+      //debugPrint('in if (userEnteredHinMic.isEmpty)');
       userEnteredHinMic = '111';
     }
 
     bool validMicFromHinResult =
         validateUserEnteredMicDataFromHin.hasMatch(userEnteredHinMic.substring(0, 3));
-    debugPrint('Testing the bool validMicFromHinResult: $validMicFromHinResult ');
+    // debugPrint('Testing the bool validMicFromHinResult: $validMicFromHinResult ');
     if (validMicFromHinResult) {
-      debugPrint(
-          'In the if after checking using RegExp for validMicFromHinResult: $validMicFromHinResult');
+      // debugPrint('In the if after checking using RegExp for validMicFromHinResult: $validMicFromHinResult');
       try {
         emit(
           LoadingState(),
         );
         final userInputValidatedMic = validateUserInputHinAndMic(userEnteredHinMic);
         final validatedMic = await repository.getMicData(userInputValidatedMic);
-        debugPrint(' in validMicFromHinResult after validatedMic: $validatedMic');
+        // debugPrint(' in validMicFromHinResult after validatedMic: $validatedMic');
         emit(LoadedState(validatedMic));
       } catch (e) {
-        debugPrint('in MicDataCubit and this is the error: $e');
+        //  debugPrint('in MicDataCubit and this is the error: $e');
         emit(ErrorState());
       }
     } else if (validMicFromHinResult == false) {
-      debugPrint('In else if (validMicFromHinResult == false) ');
+      // debugPrint('In else if (validMicFromHinResult == false) ');
       try {
         emit(
           LoadingState(),
@@ -50,7 +49,7 @@ class MicDataCubit extends Cubit<MicDataState> {
         final userEnteredMicDataList = await repository.getMicData('111');
         emit(LoadedState(userEnteredMicDataList));
       } catch (e) {
-        debugPrint('in MicDataCubit and this is the error: $e');
+        // debugPrint('in MicDataCubit and this is the error: $e');
         emit(ErrorState());
       }
     } //else If

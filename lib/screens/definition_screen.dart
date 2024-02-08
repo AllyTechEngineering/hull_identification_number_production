@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../utilities/calculate_button_size_class.dart';
+import '../utilities/adaptive_responsive_class.dart';
 import '../utilities/calculate_font_size_class.dart';
 import '../widgets/background_decoration.dart';
 // import 'package:hull_identification_number/blocs/data/mic_data_cubit.dart';
@@ -17,7 +17,7 @@ class DefinitionScreen extends StatefulWidget {
 
 class _DefinitionScreenState extends State<DefinitionScreen> {
   final CalculateFontSizeClass calculateFontSizeClass = CalculateFontSizeClass();
-  final CalculateButtonSizeClass calculateButtonSizeClass = CalculateButtonSizeClass();
+  final AdaptiveResponsiveClass adaptiveResponsiveClass = AdaptiveResponsiveClass();
   dynamic orientation, size, height, width;
   double elevatedButtonWidth = 0.0;
   double elevatedButtonHeight = 0.0;
@@ -26,8 +26,8 @@ class _DefinitionScreenState extends State<DefinitionScreen> {
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
-    elevatedButtonWidth = calculateButtonSizeClass.calculateButtonWidth(context);
-    elevatedButtonHeight = calculateButtonSizeClass.calculateButtonHeight(context);
+    elevatedButtonWidth = adaptiveResponsiveClass.calculateButtonWidth(context);
+    elevatedButtonHeight = adaptiveResponsiveClass.calculateButtonHeight(context);
     // debugPrint('Home Screen width = $width\nHome Screen height = $height');
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:styled_text/styled_text.dart';
 import '../models/buttons_data.dart';
-import '../utilities/calculate_button_size_class.dart';
+import '../utilities/adaptive_responsive_class.dart';
 import '../utilities/calculate_font_size_class.dart';
 import '../utilities/package_info_util.dart';
 import '../utilities/url_launcher.dart';
@@ -20,14 +20,16 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final CalculateFontSizeClass calculateFontSizeClass = CalculateFontSizeClass();
-  final CalculateButtonSizeClass calculateButtonSizeClass = CalculateButtonSizeClass();
+  final AdaptiveResponsiveClass adaptiveResponsiveClass = AdaptiveResponsiveClass();
   final UrlLauncher urlLauncher = UrlLauncher();
   dynamic orientation, size, height, width;
+  double? sizeBoxHeight;
   double elevatedButtonWidth = 0.0;
   double elevatedButtonHeight = 0.0;
   dynamic devicePixelRatioValue;
   bool appTrackingTransparencyStatus = false;
   String appVersion = '';
+  dynamic deviceInformationValues;
 
   @override
   void initState() {
@@ -38,22 +40,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   _initPackageInfoPlus() async {
     appVersion = await PackageInfoUtil.getAppVersion();
-    debugPrint(' App Ver: $appVersion\n');
+    // debugPrint(' App Ver: $appVersion\n');
     setState(() {
       appVersion = appVersion;
     });
   }
 
+  void initMethod() {
+    setState(() {
+      devicePixelRatioValue = MediaQuery.of(context).devicePixelRatio;
+      height = MediaQuery.of(context).size.height;
+      width = MediaQuery.of(context).size.width;
+      orientation = MediaQuery.of(context).orientation;
+      elevatedButtonWidth = adaptiveResponsiveClass.calculateButtonWidth(context);
+      elevatedButtonHeight = adaptiveResponsiveClass.calculateButtonHeight(context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    devicePixelRatioValue = MediaQuery.of(context).devicePixelRatio;
-    height = MediaQuery.of(context).size.height;
-    width = MediaQuery.of(context).size.width;
-    orientation = MediaQuery.of(context).orientation;
-    elevatedButtonWidth = calculateButtonSizeClass.calculateButtonWidth(context);
-    elevatedButtonHeight = calculateButtonSizeClass.calculateButtonHeight(context);
-    // debugPrint(
-    //     'Device Pixel Ratio: $devicePixelRatioValue\nScreen orientation: $orientation\nwidth: $width\nheight: $height');
+    initMethod();
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
@@ -87,6 +93,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         ),
         body: Container(
+          constraints: const BoxConstraints.expand(),
           decoration: BackgroundDecoration.backgroundImageDecoration,
           child: ListView.builder(
             shrinkWrap: true,

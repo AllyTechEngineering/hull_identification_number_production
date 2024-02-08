@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+// import 'package:hull_identification_number/utilities/device_info_class.dart';
 import '../blocs/mic_data/mic_data_cubit.dart';
 import '../blocs/hin_data/hin_data_cubit.dart';
 import '../models/hin_data_model.dart';
 import '../models/mic_data_model.dart';
 import '../repositories/mic_repository.dart';
-import '../utilities/calculate_button_size_class.dart';
+import '../utilities/adaptive_responsive_class.dart';
 import '../utilities/calculate_font_size_class.dart';
 import '../utilities/constants.dart';
 import '../utilities/decode_hin_class.dart';
@@ -21,35 +22,41 @@ class HomeScreenTwo extends StatefulWidget {
 }
 
 class _HomeScreenTwoState extends State<HomeScreenTwo> {
+  AdaptiveResponsiveClass deviceInformation = AdaptiveResponsiveClass();
   final ScrollController scrollController = ScrollController();
   final CalculateFontSizeClass calculateFontSizeClass = CalculateFontSizeClass();
-  final CalculateButtonSizeClass calculateButtonSizeClass = CalculateButtonSizeClass();
+  final AdaptiveResponsiveClass adaptiveResponsiveClass = AdaptiveResponsiveClass();
   final TextEditingController hinController = TextEditingController();
   final MicRepository micRepository = MicRepository();
   final DecodeHinClass decodeHinClass = DecodeHinClass();
   dynamic orientation, size, height, width;
+  double? sizeBoxHeight;
   double elevatedButtonWidth = 0.0;
+  double? elevatedAndroidButtonWidth = 0.0;
   double elevatedButtonHeight = 0.0;
   dynamic devicePixelRatioValue;
   final List<String> micDataForListView = [];
   MicDataModel micDataModel = const MicDataModel();
   HinDataModel hinDataModel = const HinDataModel();
   String decodedInfo = '';
+  Future<void> getAndroidDisplayInfoMethod() async {
+    elevatedAndroidButtonWidth = await adaptiveResponsiveClass.getAndroidDisplayInchesValueMethod();
+    debugPrint('Testing a Future method in Home Screen to get values: $elevatedAndroidButtonWidth');
+  }
 
   @override
   Widget build(BuildContext context) {
+    getAndroidDisplayInfoMethod();
+    debugPrint('In Home Screen testing elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth');
+    setState(() {
+      devicePixelRatioValue = MediaQuery.of(context).devicePixelRatio;
+      height = MediaQuery.of(context).size.height;
+      width = MediaQuery.of(context).size.width;
+      orientation = MediaQuery.of(context).orientation;
+      elevatedButtonWidth = adaptiveResponsiveClass.calculateButtonWidth(context);
+      elevatedButtonHeight = adaptiveResponsiveClass.calculateButtonHeight(context);
+    });
     InputDecorationTheme currentTheme = Theme.of(context).inputDecorationTheme;
-    devicePixelRatioValue = MediaQuery.of(context).devicePixelRatio;
-    height = MediaQuery.of(context).size.height;
-    width = MediaQuery.of(context).size.width;
-    orientation = MediaQuery.of(context).orientation;
-    elevatedButtonWidth = calculateButtonSizeClass.calculateButtonWidth(context);
-    elevatedButtonHeight = calculateButtonSizeClass.calculateButtonHeight(context);
-    // debugPrint(
-    //     'Device Pixel Ratio: $devicePixelRatioValue\nScreen orientation: $orientation\nwidth: $width\nheight: $height');
-    // debugPrint('Device Pixel Ratio X Logical Pixel Width: ${devicePixelRatioValue * width}');
-    // debugPrint('Device Pixel Ratio X Logical Pixel Height: ${devicePixelRatioValue * height}');
-    // Define the InputDecoration variable
     InputDecoration hinInputDecoration = InputDecoration(
       // Your original decoration properties
       enabledBorder: currentTheme.border,
@@ -105,6 +112,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
               ),
             ),
             body: Container(
+              constraints: const BoxConstraints.expand(),
               decoration: BackgroundDecoration.backgroundImageDecoration,
               child: SingleChildScrollView(
                 child: Column(
@@ -281,6 +289,17 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                                 'Model Year: ${hinResults[0].modelYear}',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
+                              const Divider(
+                                color: Colors.white60,
+                                thickness: 2,
+                                endIndent: 2,
+                                indent: 2,
+                              ),
+                              Text(
+                                // decodedInfo
+                                'Elev B H-W: $elevatedButtonHeight $elevatedButtonWidth',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
                             ],
                           ),
                         );
@@ -344,9 +363,6 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                                 Text(
                                   'State: ${micResults[0].state}',
                                   style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                const SizedBox(
-                                  height: 200.0,
                                 ),
                               ],
                             ),

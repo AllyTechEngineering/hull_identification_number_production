@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hull_identification_number/utilities/adaptive_responsive_class.dart';
 import 'package:hull_identification_number/utilities/app_theme_data_class.dart';
 import 'blocs/mic_data/mic_data_cubit.dart';
 import 'blocs/hin_data/hin_data_cubit.dart';
@@ -42,8 +43,20 @@ final GoRouter _router = GoRouter(
   ],
 );
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  AdaptiveResponsiveClass deviceInformation = AdaptiveResponsiveClass();
+  @override
+  void initState() {
+    super.initState();
+    deviceInformation.initPlatformState();
+  }
 
   @override
   Widget build(BuildContext context) {

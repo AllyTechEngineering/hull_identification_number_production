@@ -16,7 +16,7 @@ class HinValidator {
       if (tempStraightYearValue.isNotEmpty) {
         int tempYear = int.parse(tempStraightYearValue);
         if (tempYear >= 85 || tempYear <= 71) {
-          debugPrint('Valid year: 1972 to 1984: $tempYear');
+          // debugPrint('Valid year: 1972 to 1984: $tempYear');
           showSnackBar(
               context, 'Check Straight Year Format last two digits: Valid Years are 72 to 84.');
         } else if (tempYear >= 72 || tempYear <= 84) {

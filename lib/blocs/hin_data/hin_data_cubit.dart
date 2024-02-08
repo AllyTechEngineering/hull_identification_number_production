@@ -102,8 +102,7 @@ class HinDataCubit extends Cubit<HinDataState> {
       modelYearSerialNumberResults = hin.substring(3, 8);
       modelYearYearResults = hin.substring(9, 11);
       modelYearMonthResults = decodeHinClass.decodeMonthModelYearFormat(hin.substring(11));
-      debugPrint(
-          'Model Year Format MIC: $modelYearMicResults\nSerial Number: $modelYearSerialNumberResults\nProduction Month: $modelYearMonthResults\nProduction Year: $modelYearYearResults');
+      //debugPrint('Model Year Format MIC: $modelYearMicResults\nSerial Number: $modelYearSerialNumberResults\nProduction Month: $modelYearMonthResults\nProduction Year: $modelYearYearResults');
       return validatedUserHinResults = modelYearFormatBuildDataModel_1972_1984(modelYearMicResults,
           modelYearSerialNumberResults, modelYearYearResults, modelYearMonthResults);
     }
@@ -205,8 +204,7 @@ class HinDataCubit extends Cubit<HinDataState> {
             currentHinModelYearResults,
           );
         } else if (currentHinYearFormatModelYearForCheckInt <= 83) {
-          debugPrint(
-              'currentHinYearFormatModelYearForCheckInt greater then or equal 0 and less than or equal to 83: $currentHinYearFormatModelYearForCheckInt');
+          //debugPrint('currentHinYearFormatModelYearForCheckInt greater then or equal 0 and less than or equal to 83: $currentHinYearFormatModelYearForCheckInt');
           String tempErrorValue = '';
           currentHinMicResults = tempErrorValue.substring(0, 3);
           currentHinSerialNumberResults = tempErrorValue.substring(3, 8);
@@ -226,7 +224,7 @@ class HinDataCubit extends Cubit<HinDataState> {
     }
 
     if (!currentHinYearFormatResult && !modelYearHinFormatResult && !straightYearHinFormatResult) {
-      debugPrint('In the if that checks to see if the HIN does not fit any of the patterns: $hin');
+      //debugPrint('In the if that checks to see if the HIN does not fit any of the patterns: $hin');
       // return empty strings
       return validatedUserHinResults = hinCurrentFormatBuildDataModel(
         '',

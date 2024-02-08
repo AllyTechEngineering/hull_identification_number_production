@@ -46,6 +46,7 @@ dependencies:
   styled_text: ^8.1.0
   package_info_plus: ^5.0.1
   flutter_native_splash: ^2.3.10
+  device_info_plus: ^9.1.2
 
 dev_dependencies:
   flutter_test:
