@@ -14,9 +14,23 @@ class AdaptiveResponsiveClass {
   static double? androidDisplayHeightPixelsValue = 0.0;
   static double? afterDelayAndroidDisplayInchesValue = 0.0;
   static double? getAndroidDisplayInchesValue = 0.0;
+  void getPlatformTypeMethod() {
+    if (Platform.isIOS) {
+      debugPrint('Platform is iOS');
+    } else if (Platform.isAndroid) {
+      debugPrint('Platform is Android');
+    } else if (Platform.isMacOS) {
+      debugPrint('Platform is Android');
+    } else if (Platform.isLinux) {
+      debugPrint('Platform is Android');
+    } else if (Platform.isWindows) {
+      debugPrint('Platform is Android');
+    } else if (kIsWeb){
+      debugPrint('Platform is Web');
+    }
+  }
 
   Future<void> initPlatformState() async {
-    debugPrint('In initPlatformState');
     var deviceData = <String, dynamic>{};
     try {
       if (kIsWeb) {
@@ -36,7 +50,6 @@ class AdaptiveResponsiveClass {
     } on PlatformException {
       deviceData = <String, dynamic>{'Error:': 'Failed to get platform version.'};
     }
-    debugPrint('In initPlatformState before deviceDataValues = deviceData ');
     deviceDataValues = deviceData;
     androidDisplayInchesValue = deviceDataValues['displaySizeInches'];
     androidDisplayWidthPixelsValue = deviceDataValues['displayWidthPixels'];
@@ -44,7 +57,6 @@ class AdaptiveResponsiveClass {
   }
 
   Map<String, dynamic> readAndroidBuildData(AndroidDeviceInfo build) {
-    debugPrint('In readAndroidBuildData');
     androidDataValuesMap = {
       'version.securityPatch': build.version.securityPatch,
       'version.sdkInt': build.version.sdkInt,
@@ -81,7 +93,6 @@ class AdaptiveResponsiveClass {
       'displayYDpi': build.displayMetrics.yDpi,
       'serialNumber': build.serialNumber,
     };
-    // checkAndroidDisplaySizeInches();
     return androidDataValuesMap;
   }
 
@@ -194,21 +205,24 @@ class AdaptiveResponsiveClass {
     };
   }
 
+
+
   Future<double?> getAndroidDisplayInchesValueMethod() async {
-    // Ensure initPlatformState has completed before proceeding
     await initPlatformState();
-    // Now you can use androidDisplayInchesValue
-    if (androidDisplayInchesValue != 0.0) {
-      debugPrint('Android Display Inches Value: $androidDisplayInchesValue');
-    } else {
-      // Handle the case where androidDisplayInchesValue is null
-      debugPrint('Android Display Inches Value is 0.0');
-    }
     return androidDisplayInchesValue;
   }
 
+  Future<double?> getAndroidDisplayWidthPixelsValueMethod() async {
+    await initPlatformState();
+    return androidDisplayWidthPixelsValue;
+  }
+
+  Future<double?> getAndroidDisplayHeightPixelsValueMethod() async {
+    await initPlatformState();
+    return androidDisplayHeightPixelsValue;
+  }
+
   double calculateButtonWidth(BuildContext context) {
-    debugPrint('In calculateButtonWidth');
     getAndroidDisplayInchesValueMethod();
     double adjustedButtonWidth = 10.0;
     // devicePixelRatioValue is the number of device pixels for each logical pixel.

@@ -14,14 +14,14 @@ import '../utilities/decode_hin_class.dart';
 import '../utilities/hin_validator.dart';
 import '../widgets/background_decoration.dart';
 
-class HomeScreenTwo extends StatefulWidget {
-  const HomeScreenTwo({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomeScreenTwo> createState() => _HomeScreenTwoState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenTwoState extends State<HomeScreenTwo> {
+class _HomeScreenState extends State<HomeScreen> {
   AdaptiveResponsiveClass deviceInformation = AdaptiveResponsiveClass();
   final ScrollController scrollController = ScrollController();
   final CalculateFontSizeClass calculateFontSizeClass = CalculateFontSizeClass();
@@ -32,31 +32,132 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
   dynamic orientation, size, height, width;
   double? sizeBoxHeight;
   double elevatedButtonWidth = 0.0;
-  double? elevatedAndroidButtonWidth = 0.0;
+  double elevatedAndroidButtonWidth = 0.0;
+  double elevatedAndroidButtonHeight = 0.0;
+  bool orientationTestValue = true;
   double elevatedButtonHeight = 0.0;
   dynamic devicePixelRatioValue;
   final List<String> micDataForListView = [];
   MicDataModel micDataModel = const MicDataModel();
   HinDataModel hinDataModel = const HinDataModel();
   String decodedInfo = '';
-  Future<void> getAndroidDisplayInfoMethod() async {
-    elevatedAndroidButtonWidth = await adaptiveResponsiveClass.getAndroidDisplayInchesValueMethod();
-    debugPrint('Testing a Future method in Home Screen to get values: $elevatedAndroidButtonWidth');
+
+  Future<void> getAndroidDisplayHeightMethod() async {
+    double? tempValue = await adaptiveResponsiveClass.getAndroidDisplayInchesValueMethod();
+    elevatedAndroidButtonHeight = tempValue!;
+  }
+
+  Future<void> getAndroidDisplayWidthWandHMethod(bool orientationValue) async {
+    debugPrint('orientationValue: $orientationValue');
+    double? tempWidthValue =
+        await adaptiveResponsiveClass.getAndroidDisplayWidthPixelsValueMethod();
+    debugPrint('Top of getAndroidDisplayWidthWandHMethod: tempWidthValue= $tempWidthValue');
+    double? tempHeightValue =
+        await adaptiveResponsiveClass.getAndroidDisplayHeightPixelsValueMethod();
+    debugPrint('Top of getAndroidDisplayWidthWandHMethod: tempHeightValue= $tempHeightValue');
+
+    elevatedAndroidButtonWidth = tempWidthValue!;
+    elevatedAndroidButtonHeight = tempHeightValue!;
+    debugPrint(
+        'after getting w and h from tempValue. Width: $elevatedAndroidButtonWidth\n Height: $elevatedAndroidButtonHeight');
+
+    // Portrait button width
+    if (orientationValue == true) {
+      debugPrint('In if (orientationValue == true) which is portrait');
+      if (elevatedAndroidButtonWidth <= 500) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .40;
+        debugPrint('<= 500: elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonWidth >= 501 && elevatedAndroidButtonWidth <= 800) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .50;
+        debugPrint('501 to 800: elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonWidth >= 801 && elevatedAndroidButtonWidth <= 1200) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .50;
+        debugPrint('801 to 1200: elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonWidth >= 1201 && elevatedAndroidButtonWidth <= 1500) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .20;
+        debugPrint('1201 to 1500: elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonWidth >= 1501 && elevatedAndroidButtonWidth <= 2000) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .50;
+        debugPrint('1501 to 2000: elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth ');
+      }
+    }
+    //Landscape
+    if (orientationValue == false) {
+      debugPrint('In if (orientationValue == false) which is landscape');
+      if (elevatedAndroidButtonHeight <= 1200) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .60;
+        debugPrint('<= 1200: elevatedAndroidButtonHeight: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonHeight >= 1201 && elevatedAndroidButtonHeight <= 1800) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .60;
+        debugPrint('1201 to 1800: elevatedAndroidButtonHeight: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonHeight >= 1801 && elevatedAndroidButtonHeight <= 2200) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .60;
+        debugPrint('1801 to 2200: elevatedAndroidButtonHeight: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonHeight >= 2201 && elevatedAndroidButtonHeight <= 2400) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .70;
+        debugPrint('2201 to 2400: elevatedAndroidButtonHeight: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonWidth >= 2401 && elevatedAndroidButtonWidth <= 2800) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .80;
+        debugPrint('2401 to 2800: elevatedAndroidButtonHeight: $elevatedAndroidButtonWidth ');
+      } else if (elevatedAndroidButtonHeight >= 2801 && elevatedAndroidButtonHeight <= 3200) {
+        elevatedAndroidButtonWidth = elevatedAndroidButtonWidth * .50;
+        debugPrint('2801 to 3200: elevatedAndroidButtonHeight: $elevatedAndroidButtonWidth ');
+      }
+    }
+  }
+
+  // using orientationTestValue to avoid issues with MediaQuery in a Future
+  // true = portrait
+  // false == landscape
+  void getOrientationValue() {
+    if (orientation == Orientation.portrait) {
+      orientationTestValue = true;
+    } else if (orientation == Orientation.landscape) {
+      orientationTestValue = false;
+    }
+  }
+
+  void getOrientationSetState() {
+    if (orientation == Orientation.portrait) {
+      debugPrint('In getOrientationSetState if (orientation == Orientation.portrait)');
+      setState(() {
+        orientationTestValue = true;
+        getAndroidDisplayHeightMethod();
+        getAndroidDisplayWidthWandHMethod(orientationTestValue);
+      });
+    } else if (orientation == Orientation.landscape) {
+      debugPrint('In getOrientationSetState else if (orientation == Orientation.landscape)');
+      setState(() {
+        getAndroidDisplayHeightMethod();
+        orientationTestValue = false;
+        getAndroidDisplayWidthWandHMethod(orientationTestValue);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    getOrientationValue();
+    getAndroidDisplayHeightMethod();
+    getAndroidDisplayWidthWandHMethod(orientationTestValue);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    getAndroidDisplayInfoMethod();
-    debugPrint('In Home Screen testing elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth');
-    setState(() {
-      devicePixelRatioValue = MediaQuery.of(context).devicePixelRatio;
-      height = MediaQuery.of(context).size.height;
-      width = MediaQuery.of(context).size.width;
-      orientation = MediaQuery.of(context).orientation;
-      elevatedButtonWidth = adaptiveResponsiveClass.calculateButtonWidth(context);
-      elevatedButtonHeight = adaptiveResponsiveClass.calculateButtonHeight(context);
-    });
+    debugPrint('In Widget build above the methods to change the width');
+
+    getOrientationSetState();
+
+    devicePixelRatioValue = MediaQuery.of(context).devicePixelRatio;
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
+    orientation = MediaQuery.of(context).orientation;
+    elevatedButtonWidth = adaptiveResponsiveClass.calculateButtonWidth(context);
+    elevatedButtonHeight = adaptiveResponsiveClass.calculateButtonHeight(context);
+    adaptiveResponsiveClass.getPlatformTypeMethod();
     InputDecorationTheme currentTheme = Theme.of(context).inputDecorationTheme;
+    debugPrint('What is going on? elevatedAndroidButtonWidth: $elevatedAndroidButtonWidth ');
     InputDecoration hinInputDecoration = InputDecoration(
       // Your original decoration properties
       enabledBorder: currentTheme.border,
@@ -131,7 +232,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                     ),
                     const SizedBox(height: 8.0),
                     Container(
-                      width: elevatedButtonWidth,
+                      width: elevatedAndroidButtonWidth,
                       height: elevatedButtonHeight,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
@@ -166,7 +267,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                           style: ElevatedButton.styleFrom(
                               elevation: 10.0,
                               // fixedSize: Size((width * 0.75), (height / 5.5)),
-                              fixedSize: Size(elevatedButtonWidth, elevatedButtonHeight),
+                              fixedSize: Size(elevatedAndroidButtonWidth, elevatedButtonHeight),
                               shape: RoundedRectangleBorder(
                                 side: const BorderSide(width: 1.0, style: BorderStyle.solid),
                                 borderRadius: BorderRadius.circular(35.0),
@@ -181,7 +282,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                     ),
                     const SizedBox(height: 8.0),
                     Container(
-                      width: elevatedButtonWidth,
+                      width: elevatedAndroidButtonWidth,
                       height: elevatedButtonHeight,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
@@ -204,8 +305,8 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                            elevation: 10.0,
-                            fixedSize: Size(elevatedButtonWidth, elevatedButtonHeight),
+                            elevation: elevatedAndroidButtonWidth,
+                            fixedSize: Size(432, elevatedButtonHeight),
                             shape: RoundedRectangleBorder(
                               side: const BorderSide(width: 1.0, style: BorderStyle.solid),
                               borderRadius: BorderRadius.circular(35.0),
@@ -297,7 +398,7 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                               ),
                               Text(
                                 // decodedInfo
-                                'Elev B H-W: $elevatedButtonHeight $elevatedButtonWidth',
+                                'Elev B H-W: $elevatedAndroidButtonWidth $elevatedAndroidButtonHeight',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             ],

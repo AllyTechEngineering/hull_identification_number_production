@@ -6,7 +6,7 @@ import '../widgets/background_decoration.dart';
 // import 'package:hull_identification_number/blocs/data/mic_data_cubit.dart';
 // import 'package:hull_identification_number/models/mic_data_model.dart';
 // import 'package:hull_identification_number/repositories/mic_repository.dart';
-// import 'package:hull_identification_number/screens/home_screen_two.dart';
+// import 'package:hull_identification_number/screens/home_screen.dart';
 
 class DefinitionScreen extends StatefulWidget {
   const DefinitionScreen({super.key});

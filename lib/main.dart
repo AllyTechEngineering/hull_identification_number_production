@@ -9,7 +9,7 @@ import 'blocs/mic_data/mic_data_cubit.dart';
 import 'blocs/hin_data/hin_data_cubit.dart';
 import 'repositories/mic_repository.dart';
 import 'screens/definition_screen.dart';
-import 'screens/home_screen_two.dart';
+import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';
 // import 'utilities/theme.dart';
 
@@ -23,7 +23,7 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const HomeScreenTwo();
+        return const HomeScreen();
       },
       routes: <RouteBase>[
         GoRoute(
